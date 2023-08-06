@@ -1,4 +1,4 @@
-# COMS4111-project
+# Music Review Project
 
 Fully functional music review webpage built using Python, Flask, PSQL, and runs on Google Cloud VM.
 
