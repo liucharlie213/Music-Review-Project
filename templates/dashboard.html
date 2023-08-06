@@ -1,0 +1,63 @@
+
+<html>
+  <style>
+    body{ 
+      font-size: 15pt;
+      font-family: arial;
+    }
+  </style>
+
+
+<body>
+
+<nav>
+ <a href="/index">HOME</a>
+ <a href="">PROFILE</a>
+ <a href="/review">REVIEW</a>
+ <a href="/logout">LOGOUT</a>
+</nav>
+
+<h1>Welcome to your dashboard, {{user}}</h1>
+
+<h2>Your Info</h2>
+	{% for n in user_info %}
+	<div>Username: {{n[0]}}</div>	
+	<div>Name: {{n[1]}}</div>
+	<div>Birthday: {{n[2]}}</div>
+	<div>Email: {{n[3]}}</div>
+	{% endfor %}
+
+<h2>Your Reviews</h2>
+        {% for n in user_review %}
+	<h3 style="margin-bottom: 0;">{{n[0]}}</h3>
+	<div>Album: {{n[6]}}</div>
+	<div>User: {{user}}</div>
+	<div>Date Posted: {{n[1]}}</div>
+	<div>Rating: {{n[2]}}</div>
+	<div>Review: {{n[3]}}</div>
+	<div>Likes: {{n[4]}}        
+        {% endfor %}
+
+<h2>Your Playlist</h2>
+	<a href="/playlist">Create/Edit Playlist</a>
+	{% for n in playlist_info %}
+	<h3 style="margin-bottom:0">Playlist Name: {{n[0]}}</h3>
+        <div>Date Created: {{n[1]}}</div>
+	<div>Description: {{n[2]}}</div>
+
+{% if n[3] is not none %}
+    <div>Albums: {% for album in n[3] %}<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ album }}</div>{% endfor %}</div>
+{% endif %}
+	
+<!--	<% if n[3] %>
+	<div>Albums: {% for n in n[3] %}<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{n}}<div>{% endfor %}</div>
+	<% endif %> -->
+	{% endfor %}
+
+        <form method="POST" action="{{ url_for('addplaylist') }}">
+        <label for="album_name">Add Album Name:</label><br>
+        <input type="text" id="album_name" name="album_name"/><br>
+        <input type="submit" value="Submit">
+</form>
+</body>
+</html>

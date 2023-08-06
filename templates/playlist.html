@@ -1,0 +1,31 @@
+<html>
+  <style>
+    body{
+      font-size: 15pt;
+      font-family: arial;
+    }
+  </style>
+
+
+<body>
+<nav>
+        <a href="/index">HOME</a>
+        <a href="/dashboard">PROFILE</a>
+        <a href="">REVIEW</a>
+        <a href="/logout">LOGOUT</a>
+</nav>
+
+<h1>Create or Edit Your Playlist</h3>
+
+<form method="POST" action="{{ url_for('playlist') }}">
+  <label for="playlist_name">Playlist Name:</label><br>
+  <input type="text" id="playlist_name" name="playlist_name" /><br>
+  <label for="playlist_desc">Playlist Description:</label><br>
+  <textarea id="playlist_desc" name="playlist_desc" rows="4" cols="50"></textarea><br>
+<!--<label for="album_name">Add an album:</label><br>
+  <input type="text" id="album_name" name="album_name" /><br> -->
+  <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>

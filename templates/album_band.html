@@ -1,0 +1,41 @@
+<html>
+        <style>
+                body{
+                        font-size: 15pt;
+                        font-family: arial;
+                }
+        </style>
+        <body>
+<nav>
+                        <a href="/index">HOME</a>
+                        <a href="/dashboard">PROFILE</a>
+                        <a href="/review">REVIEW</a>
+                        <a href="/logout">LOGOUT</a>
+                </nav>
+
+                <h1>{{album_info[0][0]}}</h1>
+
+                <h2>About {{album_info[0][0]}}</h2>
+                {% for n in album_info %}
+                        <div>Artist: <a href = /band/{{album_artist_id[0]}}>{{album_artist[0]}}</a></div>
+                        <div>Release Date: {{n[1]}}</div>
+                        <div>Duration: {{n[2]}}</div>
+                        <div>Number of Songs: {{n[3]}}</div>
+                        <div>Songs: {% for n in n[4] %}<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{n}}<div>{% endfor %}</div>
+                {% endfor %}
+
+                <h2>Reviews</h2>
+                {% for n in review_info %}
+                        <h3 style="margin-bottom: 0;">{{n[0]}}</h3>
+                        <div>User: {{n[1]}}</div>
+                        <div>Date Posted: {{n[2]}}</div>
+                        <div>Rating: {{n[3]}}</div>
+                        <div>Review: {{n[4]}}</div>
+                        <div>Likes: {{n[5]}}
+			<form method="POST" action="/like_review">
+                        <input type="hidden" name="review_id" value="{{ n[6] }}"">
+                        <button type="submit" name="like-btn">LIKE</button>
+                        </form>
+                {% endfor %}
+        </body>
+</html>

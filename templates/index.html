@@ -1,0 +1,68 @@
+<html>
+  <style>
+    body{ 
+      font-size: 15pt;
+      font-family: arial;
+    }
+  </style>
+
+
+<body>
+
+<nav>
+ <a href="/index">HOME</a>
+<a href="/dashboard">PROFILE</a>
+ <a href="/review">REVIEW</a>
+ <a href="/logout">LOGOUT</a>
+</nav>
+
+<h1>Super Cool and Awesome Music Rating Site</h1>
+
+
+<form method="GET" action="{{ url_for('search') }}"> 
+  <input type="text" name="query" placeholder="Search for an artist or album"><br><br>
+  <button type="submit">Search</button>
+</form>
+
+<h2>Top 3 Reviews</h2>
+{% for n in top_reviews %}
+                        <h3 style="margin-bottom: 0;">{{n[0]}}</h3>
+                        <div>User: {{n[1]}}</div>
+                        <div>Date Posted: {{n[2]}}</div>
+                        <div>Rating: {{n[3]}}</div>
+                        <div>Review: {{n[4]}}</div>
+                        <div>Likes: {{n[5]}}
+                        <form method="POST" action="/like_review">
+                        <input type="hidden" name="review_id" value="{{ n[6] }}"">
+                        <button type="submit" name="like-btn">LIKE</button>
+                        </form>
+                {% endfor %}
+
+<h2>Popular Albums</h2>
+<!--  <div>{{data}}</div> -->
+ <div>
+    {% for n in album_solo_data %}
+    <div><a href="/album/solo/{{n[0]}}">{{n[1]}}</a></div>
+    {% endfor %}
+    {% for n in album_band_data %}
+    <div><a href="/album/band/{{n[0]}}">{{n[1]}}</a></div>
+    {% endfor %}
+  </div>
+
+
+  <h2>Popular Artists</h2>
+  <div>
+   {% for n in solo_id_data %}
+	<div><a href="/solo/{{n[0]}}">{{n[1]}}</a></div>
+   {% endfor %}
+   {% for n in band_id_data %}
+        <div><a href="/band/{{n[0]}}">{{n[1]}}</a></div>
+   {% endfor %}
+  </div>
+
+
+
+</body>
+
+
+</html>

@@ -1,0 +1,31 @@
+
+<html>
+  <style>
+    body{
+      font-size: 15pt;
+      font-family: arial;
+    }
+  </style>
+
+
+<body>
+<nav>
+        <a href="">LOGIN</a>
+        <a href="/signup">SIGN UP</a>
+</nav>
+
+<h1>LOGIN</h1>
+
+<form method="POST" action="{{ url_for('login') }}">
+  <label for="username">Username:</label>
+  <input type="text" id="username" name="username"><br><br>
+
+  <label for="password">Password:</label>
+  <input type="password" id="password" name="password"><br><br>
+
+  <input type="submit" value="Submit">
+</form>
+
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<html>
+        <style>
+		body{ 
+      			font-size: 15pt;
+      			font-family: arial;
+    		}
+        </style>
+        <body>
+		<nav>
+                        <a href="/index">HOME</a>
+                        <a href="/dashboard">PROFILE</a>
+                        <a href="/review">REVIEW</a>
+                        <a href="/logout">LOGOUT</a>
+                </nav>
+
+		<h1>{{artist_name[0]}}</h1>
+                <h2>About {{artist_name[0]}}</h2>
+		{% for n in artist_info %}
+		<div>Birth Name: {{n[0]}}</div>
+		<div>Birthday: {{n[1]}}</div>
+		<div>Nationality: {{n[2]}}</div>
+		<div>Genre: {{n[3]}}</div>
+		<div>Label: {{n[4]}}</div>
+		{% endfor %}
+        
+                <h2>Albums</h2>
+                <div>
+                {% for n in album_data %}
+                <div><a href = "/album/solo/{{n[1]}}">{{n[0]}}</div>
+                {% endfor %}
+                </div>
+        </body>
+</html>
